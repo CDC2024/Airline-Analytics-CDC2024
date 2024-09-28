@@ -3,31 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Hackathon Findings</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> <!-- Plotly for interactive charts -->
+    <title>Data Hackathon Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+        section {
+            margin-bottom: 50px;
+        }
+        iframe {
+            border: none;
+            width: 100%;
+            height: 600px;
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Data Hackathon Findings</h1>
-        <p>Analyzing air travel demand, pricing, and market trends</p>
+        <h1>CDC: Air Travel Insights</h1>
+        <p>Scroll down to explore the insights from our analysis of air travel trends.</p>
     </header>
 
-    <section id="introduction">
-        <h2>Introduction</h2>
-        <p>This project presents findings from the US airline travel dataset, including insights on market demand, route profitability, fare trends, and more.</p>
+    <section id="market-analysis">
+        <h2>Market Analysis: Passenger Trends Over Time</h2>
+        <p>We analyzed air travel demand over the years. The chart below shows how passenger volumes changed.</p>
+        <iframe src="passenger_trends.html"></iframe>
     </section>
 
-    <section id="charts">
-        <h2>Interactive Charts</h2>
-        <div id="passenger-trends"></div>
-        <div id="fare-trends"></div>
+    <section id="competitor-analysis">
+        <h2>Competitor Analysis: Airline Performance Over Time</h2>
+        <p>This chart shows how different airlines performed based on passenger volumes.</p>
+        <iframe src="airline_passenger_trends.html"></iframe>
+    </section>
+
+    <section id="price-optimization">
+        <h2>Price Optimization: Predicted vs Actual Fares</h2>
+        <p>Using a machine learning model, we predicted fare prices. The scatter plot below compares actual and predicted fares.</p>
+        <iframe src="price_optimization.html"></iframe>
+    </section>
+
+    <section id="future-additions">
+        <h2>Future Additions</h2>
+        <p>We plan to explore advanced route planning and additional economic insights in the future.</p>
     </section>
 
     <footer>
-        <p>Created by William Millen and Muhammad Fouly | carolina Data Challenge 2024</p>
+        <p>&copy; Carolina Data Challenge 2024</p>
     </footer>
-
-    <script src="scripts.js"></script> <!-- Include interactive chart scripts -->
 </body>
 </html>
+
