@@ -12,6 +12,7 @@
         select {
             padding: 10px;
             font-size: 16px;
+            margin-bottom: 20px;
         }
         iframe {
             width: 100%;
@@ -19,12 +20,17 @@
             border: none;
             margin-top: 20px;
         }
+        h2 {
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
 
     <h1>Airline Statistics Dashboard</h1>
 
+    <!-- Original 5 Components -->
+    <h2>Original Dat</h2>
     <label for="chartSelector">Choose a statistic to view:</label>
     <select id="chartSelector">
         <option value="passengers_by_year_quarters_airlines.html">Number of Passengers by Year (with Quarters) - Airlines</option>
@@ -34,20 +40,41 @@
         <option value="most_traveled_from_cities.html">Most Traveled From Cities Over the Years</option>
     </select>
 
-    <!-- Iframe to display the selected chart -->
+    <!-- Iframe for Original Components -->
     <iframe id="chartFrame" src="passengers_by_year_quarters.html"></iframe>
 
+    <!-- New 5 Components Section -->
+    <h2>Updated Components (Including Predicted 1995 Data and Accounting for Quarters)</h2>
+    <label for="updatedChartSelector">Choose an updated statistic to view:</label>
+    <select id="updatedChartSelector">
+        <option value="passengers_by_year_quarters_updated.html">Number of Passengers by Year (with Quarters) - Updated</option>
+        <option value="passengers_by_year_quarters_airlines_updated.html">Number of Passengers by Year (with Quarters) - Airlines - Updated</option>
+        <option value="average_fare_by_year_quarters_updated.html">Average Fare by Year (with Quarters) - Updated</option>
+        <option value="most_traveled_to_cities_by_year_quarters.html">Most Traveled To Cities by Year (with Quarters) - Updated</option>
+        <option value="most_traveled_from_cities_by_year_quarters.html">Most Traveled From Cities by Year (with Quarters) - Updated</option>
+    </select>
+
+    <!-- Iframe for Updated Components -->
+    <iframe id="updatedChartFrame" src="passengers_by_year_quarters_updated.html"></iframe>
+
     <script>
-        // JavaScript to change the iframe source based on dropdown selection
+        // JavaScript to change the iframe source based on dropdown selection for Original Components
         const chartSelector = document.getElementById('chartSelector');
         const chartFrame = document.getElementById('chartFrame');
 
-        // Add event listener to the dropdown
         chartSelector.addEventListener('change', function() {
-            // Change the iframe source to the selected chart
             chartFrame.src = chartSelector.value;
+        });
+
+        // JavaScript to change the iframe source based on dropdown selection for Updated Components
+        const updatedChartSelector = document.getElementById('updatedChartSelector');
+        const updatedChartFrame = document.getElementById('updatedChartFrame');
+
+        updatedChartSelector.addEventListener('change', function() {
+            updatedChartFrame.src = updatedChartSelector.value;
         });
     </script>
 
 </body>
 </html>
+
