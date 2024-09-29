@@ -23,14 +23,18 @@
         h2 {
             margin-top: 40px;
         }
-        .insights {
+        .bullet-points {
             text-align: left;
-            margin: 0 auto;
-            width: 80%;
-            max-width: 1200px;
+            max-width: 800px;
+            margin: 20px auto;
+            font-size: 16px;
         }
-        .insights p {
-            margin-bottom: 10px;
+        .bullet-points ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .bullet-points h3 {
+            text-align: center;
         }
     </style>
 </head>
@@ -39,11 +43,11 @@
     <h1>Airline Statistics Dashboard</h1>
 
     <!-- Original 5 Components -->
-    <h2>Original Dat</h2>
+    <h2>Original Data</h2>
     <label for="chartSelector">Choose a statistic to view:</label>
     <select id="chartSelector">
-        <option value="passengers_by_year_quarters.html">Number of Passengers by Year (with Quarters)</option>
         <option value="passengers_by_year_quarters_airlines.html">Number of Passengers by Year (with Quarters) - Airlines</option>
+        <option value="passengers_by_year_quarters.html">Number of Passengers by Year (with Quarters)</option>
         <option value="average_fare_by_year_quarters.html">Average Fare by Year (with Quarters)</option>
         <option value="most_traveled_to_cities.html">Most Traveled To Cities Over the Years</option>
         <option value="most_traveled_from_cities.html">Most Traveled From Cities Over the Years</option>
@@ -52,39 +56,8 @@
     <!-- Iframe for Original Components -->
     <iframe id="chartFrame" src="passengers_by_year_quarters.html"></iframe>
 
-    <!-- Insights for Original Components -->
-    <div class="insights" id="insightsOriginal">
-        <div id="passengers_by_year_quarters_insights" style="display: none;">
-            <h3>Number of Passengers by Year (with Quarters)</h3>
-            <p><strong>Consistent Growth Over Time:</strong> The data shows a steady increase in the number of passengers from the 1990s up until the sharp decline in 2020 due to the COVID-19 pandemic.</p>
-            <p><strong>Significant Impact of COVID-19:</strong> Both charts highlight the dramatic drop in passengers during 2020, followed by a rapid recovery starting in 2021.</p>
-            <p><strong>Quarterly Data Adds Precision:</strong> The updated chart that accounts for quarterly data provides more detailed insights into seasonal fluctuations.</p>
-        </div>
-
-        <div id="passengers_by_year_quarters_airlines_insights" style="display: none;">
-            <h3>Number of Passengers by Year (with Quarters) - Airlines</h3>
-            <p><strong>Dominance of Southwest Airlines (WN):</strong> Southwest (WN) consistently leads in passenger volumes since the early 2000s.</p>
-            <p><strong>Impact of Airline Mergers:</strong> Airlines like Continental and Northwest merged into larger carriers like United and Delta, reshuffling the market.</p>
-        </div>
-
-        <div id="average_fare_by_year_quarters_insights" style="display: none;">
-            <h3>Average Fare by Year (with Quarters)</h3>
-            <p><strong>Steady Fare Increase Over Time:</strong> Airfares have steadily increased from the early 2000s, reflecting rising operational costs.</p>
-            <p><strong>Pandemic-Driven Fare Dip:</strong> Both charts show a sharp drop in 2020, followed by a recovery in 2021.</p>
-        </div>
-
-        <div id="most_traveled_to_cities_insights" style="display: none;">
-            <h3>Most Traveled To Cities Over the Years</h3>
-            <p><strong>Most Popular Destination Cities:</strong> New York City, Los Angeles, and Miami remain top destinations across both charts.</p>
-            <p><strong>Post-Pandemic Recovery:</strong> Larger cities like New York and Los Angeles have seen faster recovery from the pandemic than others.</p>
-        </div>
-
-        <div id="most_traveled_from_cities_insights" style="display: none;">
-            <h3>Most Traveled From Cities Over the Years</h3>
-            <p><strong>Consistent Growth:</strong> Major cities like Atlanta, Los Angeles, and New York consistently rank as top cities for air travel.</p>
-            <p><strong>Impact of External Events:</strong> Both charts show a dip in 2020 due to the pandemic, followed by a strong recovery.</p>
-        </div>
-    </div>
+    <!-- Bullet Points for Original Components -->
+    <div id="bulletPoints" class="bullet-points"></div>
 
     <!-- New 5 Components Section -->
     <h2>Updated Components (Including Predicted 1995 Data and Accounting for Quarters)</h2>
@@ -100,65 +73,216 @@
     <!-- Iframe for Updated Components -->
     <iframe id="updatedChartFrame" src="passengers_by_year_quarters_updated.html"></iframe>
 
-    <!-- Insights for Updated Components -->
-    <div class="insights" id="insightsUpdated">
-        <!-- Add similar divs for the updated charts here, matching the original section -->
-        <!-- For example: -->
-        <div id="passengers_by_year_quarters_updated_insights" style="display: none;">
-            <h3>Number of Passengers by Year (with Quarters) - Updated</h3>
-            <p><strong>Consistent Growth Over Time:</strong> The updated chart refines predictions from 1995 and onward, offering a more accurate view.</p>
-            <p><strong>Significant Impact of COVID-19:</strong> The pandemic impact and recovery are clearer in this chart.</p>
-        </div>
-        <!-- Add more divs for other updated charts -->
-    </div>
+    <!-- Bullet Points for Updated Components -->
+    <div id="updatedBulletPoints" class="bullet-points"></div>
 
     <script>
-        // JavaScript to change the iframe source and display insights based on dropdown selection for Original Components
+        // Data for bullet points
+        const bulletPointData = {
+            'passengers_by_year_quarters.html': `
+                <h3>Number of Passengers per Year (Quarters)</h3>
+                <ul>
+                    <li><strong>Consistent Growth Over Time:</strong>
+                        <ul>
+                            <li>The data shows a steady increase in the number of passengers from the 1990s up until the sharp decline in 2020 due to the COVID-19 pandemic.</li>
+                            <li>Significant Impact of COVID-19: Both charts highlight the dramatic drop in passengers during 2020, followed by a rapid recovery starting in 2021. This reflects the severe impact of the pandemic on air travel.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Quarterly Data Adds Precision:</strong>
+                        <ul>
+                            <li>The updated chart that accounts for quarterly data provides more detailed insights into seasonal fluctuations, offering a clearer picture of short-term variations within each year.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Passenger Peaks and Plateaus:</strong>
+                        <ul>
+                            <li>Peaks in the mid-2000s and the plateauing of passenger growth around 2010 are visible in both charts, suggesting that external factors like economic conditions or airline policies impacted growth rates during these periods.</li>
+                        </ul>
+                    </li>
+                </ul>
+            `,
+            'passengers_by_year_quarters_airlines.html': `
+                <h3>Number of Passengers per Year (Quarters) - Airlines</h3>
+                <ul>
+                    <li><strong>Dominance of Southwest Airlines (WN):</strong>
+                        <ul>
+                            <li>Both the original and updated charts clearly show Southwest (WN) consistently leading in terms of passenger volumes since the early 2000s, peaking at over 250,000 passengers per quarter in some years.</li>
+                            <li>Conclusion: Southwest Airlines' market dominance is significant and has remained relatively stable even through periods of economic downturn.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Rapid Growth of Delta (DL) and American Airlines (AA):</strong>
+                        <ul>
+                            <li>Delta Airlines (DL) shows a notable increase in passenger volumes, particularly post-2010, which highlights its growing market presence.</li>
+                            <li>American Airlines (AA), although smaller than Southwest Airlines, shows strong, steady growth over time, particularly from the mid-2000s onward.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Impact of Airline Mergers and Market Exits:</strong>
+                        <ul>
+                            <li>Some airlines, such as Continental Airlines (CO), are present in the earlier data but drop off later due to mergers (e.g., Continental merged with United Airlines in 2012).</li>
+                            <li>The airline industry has seen significant consolidation over the years, with key mergers leading to market reshuffling and stronger dominance by a few major carriers.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Pandemic Disruption Across All Airlines:</strong>
+                        <ul>
+                            <li>The charts clearly show the steep decline in passengers for all airlines during the pandemic in 2020. However, some airlines, such as Delta (DL), show a quicker recovery compared to others.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Diverse Airline Trends:</strong>
+                        <ul>
+                            <li>There is a wide variety of smaller airlines with fluctuating trends over the years. Carriers like Alaska Airlines (AS) and Frontier Airlines (FF) maintained smaller but consistent passenger bases.</li>
+                        </ul>
+                    </li>
+                </ul>
+            `,
+            'average_fare_by_year_quarters.html': `
+                <h3>Average Fare by Year with Quarters</h3>
+                <ul>
+                    <li><strong>Steady Fare Increase Over Time:</strong>
+                        <ul>
+                            <li>Both visualizations show that the average fare has steadily increased from the early 2000s to around 2020.</li>
+                            <li>Airfares have generally been on the rise, reflecting increasing operational costs, inflation, and changes in demand patterns.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Pandemic-Driven Fare Dip:</strong>
+                        <ul>
+                            <li>In both charts, the sharp drop in average fares during the 2020 pandemic is evident, followed by a dramatic recovery in 2021 and beyond.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Pre-2000 Fare Volatility:</strong>
+                        <ul>
+                            <li>The charts show significant fluctuations in average fares before the year 2000, indicating that the industry was undergoing changes in pricing.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Post-2010 Fare Stability with Gradual Increase:</strong>
+                        <ul>
+                            <li>After 2010, both visualizations show a gradual and relatively steady rise in fares, indicating a period of price stability for the airline industry.</li>
+                        </ul>
+                    </li>
+                    <li><strong>The Seasonal Nature of Airfare Pricing:</strong>
+                        <ul>
+                            <li>The updated chart, which includes quarterly data, highlights the seasonal fluctuations in airfares.</li>
+                        </ul>
+                    </li>
+                </ul>
+            `,
+            'most_traveled_to_cities.html': `
+                <h3>Most Traveled To Cities Over the Years</h3>
+                <ul>
+                    <li><strong>Most Popular Destination Cities:</strong>
+                        <ul>
+                            <li>Both charts indicate that New York City, Los Angeles, and Miami are consistently among the most traveled-to cities over the years.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Post-Pandemic Recovery:</strong>
+                        <ul>
+                            <li>In the updated chart, New York City and Los Angeles experienced a faster and more substantial recovery compared to other cities.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Seasonal Travel Peaks (Updated Data):</strong>
+                        <ul>
+                            <li>The updated chart shows quarterly fluctuations, with visible peaks and troughs throughout the years.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Changes Over Time:</strong>
+                        <ul>
+                            <li>Between 1995 and 2005, cities like Miami and Orlando saw gradual increases in travel demand.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Diverse Regional Representation:</strong>
+                        <ul>
+                            <li>The charts highlight a mix of East Coast, West Coast, and Southern cities, showcasing the diverse travel demand across the United States.</li>
+                        </ul>
+                    </li>
+                </ul>
+            `,
+            'most_traveled_from_cities.html': `
+                <h3>Most Traveled From Cities Over the Years</h3>
+                <ul>
+                    <li><strong>Consistent Growth:</strong>
+                        <ul>
+                            <li>Major cities such as Atlanta, Los Angeles, and New York have consistently been among the top cities for passenger traffic over the years.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Seasonality and Fluctuations:</strong>
+                        <ul>
+                            <li>The updated visualization accounts for quarterly data, revealing more granular insights into seasonal fluctuations in air travel demand.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Impact of External Events:</strong>
+                        <ul>
+                            <li>A noticeable dip in passenger numbers across all cities in 2020, followed by a sharp recovery, highlights the impact of the COVID-19 pandemic on air travel.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Top Cities for Air Travel:</strong>
+                        <ul>
+                            <li>Cities like Los Angeles, Chicago, and Atlanta consistently rank as the most traveled from cities.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Post-Pandemic Recovery:</strong>
+                        <ul>
+                            <li>The updated chart shows how major cities began recovering from the pandemic downturn, especially from 2021 onwards.</li>
+                        </ul>
+                    </li>
+                </ul>
+            `,
+            // Updated charts
+            'passengers_by_year_quarters_updated.html': `
+                <h3>Number of Passengers per Year (Quarters) - Updated</h3>
+                <!-- Same bullet points as the original with emphasis on updated data -->
+                <!-- You can add or modify bullet points as needed -->
+            `,
+            'passengers_by_year_quarters_airlines_updated.html': `
+                <h3>Number of Passengers per Year (Quarters) - Airlines - Updated</h3>
+                <!-- Same bullet points as the original with emphasis on updated data -->
+                <!-- You can add or modify bullet points as needed -->
+            `,
+            'average_fare_by_year_quarters_updated.html': `
+                <h3>Average Fare by Year with Quarters - Updated</h3>
+                <!-- Same bullet points as the original with emphasis on updated data -->
+                <!-- You can add or modify bullet points as needed -->
+            `,
+            'most_traveled_to_cities_by_year_quarters.html': `
+                <h3>Most Traveled To Cities by Year (with Quarters) - Updated</h3>
+                <!-- Same bullet points as the original with emphasis on updated data -->
+                <!-- You can add or modify bullet points as needed -->
+            `,
+            'most_traveled_from_cities_by_year_quarters.html': `
+                <h3>Most Traveled From Cities by Year (with Quarters) - Updated</h3>
+                <!-- Same bullet points as the original with emphasis on updated data -->
+                <!-- You can add or modify bullet points as needed -->
+            `
+        };
+
+        // JavaScript to change the iframe source and display bullet points for Original Components
         const chartSelector = document.getElementById('chartSelector');
         const chartFrame = document.getElementById('chartFrame');
+        const bulletPointsDiv = document.getElementById('bulletPoints');
 
-        const originalInsights = {
-            'passengers_by_year_quarters.html': 'passengers_by_year_quarters_insights',
-            'passengers_by_year_quarters_airlines.html': 'passengers_by_year_quarters_airlines_insights',
-            'average_fare_by_year_quarters.html': 'average_fare_by_year_quarters_insights',
-            'most_traveled_to_cities.html': 'most_traveled_to_cities_insights',
-            'most_traveled_from_cities.html': 'most_traveled_from_cities_insights',
-        };
+        function updateChartAndBulletPoints() {
+            const selectedValue = chartSelector.value;
+            chartFrame.src = selectedValue;
+            bulletPointsDiv.innerHTML = bulletPointData[selectedValue] || '';
+        }
 
-        chartSelector.addEventListener('change', function() {
-            chartFrame.src = chartSelector.value;
+        chartSelector.addEventListener('change', updateChartAndBulletPoints);
 
-            // Hide all insights
-            Object.values(originalInsights).forEach(insightId => {
-                document.getElementById(insightId).style.display = 'none';
-            });
+        // Initialize with default selection
+        updateChartAndBulletPoints();
 
-            // Show the selected insight
-            const selectedInsight = originalInsights[chartSelector.value];
-            document.getElementById(selectedInsight).style.display = 'block';
-        });
-
-        // JavaScript to change the iframe source and display insights based on dropdown selection for Updated Components
+        // JavaScript to change the iframe source and display bullet points for Updated Components
         const updatedChartSelector = document.getElementById('updatedChartSelector');
         const updatedChartFrame = document.getElementById('updatedChartFrame');
+        const updatedBulletPointsDiv = document.getElementById('updatedBulletPoints');
 
-        const updatedInsights = {
-            'passengers_by_year_quarters_updated.html': 'passengers_by_year_quarters_updated_insights',
-            // Add similar entries for other updated charts and insights
-        };
+        function updateUpdatedChartAndBulletPoints() {
+            const selectedValue = updatedChartSelector.value;
+            updatedChartFrame.src = selectedValue;
+            updatedBulletPointsDiv.innerHTML = bulletPointData[selectedValue] || '';
+        }
 
-        updatedChartSelector.addEventListener('change', function() {
-            updatedChartFrame.src = updatedChartSelector.value;
+        updatedChartSelector.addEventListener('change', updateUpdatedChartAndBulletPoints);
 
-            // Hide all insights
-            Object.values(updatedInsights).forEach(insightId => {
-                document.getElementById(insightId).style.display = 'none';
-            });
-
-            // Show the selected insight
-            const selectedInsight = updatedInsights[updatedChartSelector.value];
-            document.getElementById(selectedInsight).style.display = 'block';
-        });
+        // Initialize with default selection
+        updateUpdatedChartAndBulletPoints();
     </script>
 
 </body>
