@@ -1,1 +1,1 @@
-CDC 2024 Prject. : https://cdc2024.github.io/CDC24/
+CDC 2024 Project. : https://cdc2024.github.io/CDC24/
