@@ -50,4 +50,33 @@
     </script>
 
 </body>
+<body>
+
+    <h1>Airline Statistics Dashboard with Filled In 1995 Predictions</h1>
+
+    <label for="chartSelector">Choose a statistic to view:</label>
+    <select id="chartSelector">
+        <option value="passengers_by_year_airlines1.html">Number of Passengers by Year - Airlines</option>
+        <option value="passengers_by_year1.html">Number of Passengers by Year</option>
+        <option value="average_fare_by_year1.html">Average Fare by Year</option>
+        <option value="most_traveled_to_cities1.html">Most Traveled To Cities Over the Years</option>
+        <option value="most_traveled_from_cities1.html">Most Traveled From Cities Over the Years</option>
+    </select>
+
+    <!-- Iframe to display the selected chart -->
+    <iframe id="chartFrame" src="passengers_by_year1.html"></iframe>
+
+    <script>
+        // JavaScript to change the iframe source based on dropdown selection
+        const chartSelector = document.getElementById('chartSelector');
+        const chartFrame = document.getElementById('chartFrame');
+
+        // Add event listener to the dropdown
+        chartSelector.addEventListener('change', function() {
+            // Change the iframe source to the selected chart
+            chartFrame.src = chartSelector.value;
+        });
+    </script>
+
+</body>
 </html>
