@@ -3,7 +3,7 @@
 Welcome to the CDC 2024 Project repository. This project explores key data and findings in the CDC's 2024 dataset. Please find below the relevant resources, including the project webpage, Google Colab notebooks, and our presentation.
 
 ## Project Webpage
-Explore the project details on our [CDC 2024 Project Webpage](https://cdc2024.github.io/CDC24/).
+Explore the project details on our [CDC 2024 Project Webpage](https://cdc2024.github.io/Airline-Analytics-CDC2024/).
 
 ## Google Colab Notebooks
 Interactive notebooks that walk through our data analysis and insights:
